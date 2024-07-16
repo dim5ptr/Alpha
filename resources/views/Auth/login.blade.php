@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Login</title>
+    
     <style>
         * {
             margin: 0;
@@ -18,7 +19,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #AFC3FC, #365AC2);
+            background: linear-gradient(135deg, #365AC2, #AFC3FC);
         }
 
         .container {
