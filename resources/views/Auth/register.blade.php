@@ -52,6 +52,7 @@
             color: #365AC2;
         }
         .form-group .input-group input {
+            outline: none;
             font-size: medium;
             width: calc(80% - 20px); /* Lebar input dikurangi dengan padding untuk ikon */
             height: 50px;
@@ -62,6 +63,11 @@
             box-sizing: border-box;
             color: #090909; /* Warna teks di dalam input */
         }
+
+        .form-group .input-group input:hover {
+            box-shadow: 0 0 5px #AFC3FC;
+        }
+        
         .btn-primary {
             font-weight: bolder;
             width: 60%;
