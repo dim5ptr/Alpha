@@ -14,7 +14,16 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        // Validasi data input
+        $request->validate([
+            'username' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
+
+        // Kirim data ke API
         $response = Http::post(env('POSTMAN_BASE_URL') . '/register', [
+            'username' => $request->username,
             'email' => $request->email,
             'password' => $request->password,
         ]);
