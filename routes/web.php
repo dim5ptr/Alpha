@@ -25,3 +25,8 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 
+
+Route::get('/admindashboard', function(){
+    return view('admin.dashboard');
+})->name('admindashboard');
+
