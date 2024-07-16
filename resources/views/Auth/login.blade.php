@@ -148,7 +148,7 @@
         }
 
         .register-link a {
-            color: #fff;
+            color: #afc3fc;
             text-decoration: none;
             font-weight: bold;
         }

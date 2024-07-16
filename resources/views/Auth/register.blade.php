@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Register</title>
     <style>
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #AFC3FC;
-            margin: 0;
-            padding: 0;
+            background: linear-gradient(135deg, #AFC3FC, #365AC2);
+            height: 100vh;
         }
         .container {
             padding-top: 5%;
