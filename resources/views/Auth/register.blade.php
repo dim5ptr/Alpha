@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Register</title>
     <style>
-
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #AFC3FC, #365AC2);
@@ -67,7 +66,7 @@
         .form-group .input-group input:hover {
             box-shadow: 0 0 5px #AFC3FC;
         }
-        
+
         .btn-primary {
             font-weight: bolder;
             width: 60%;
@@ -160,6 +159,12 @@
                     <div class="input-group">
                         <i class="fa fa-lock"></i>
                         <input type="password" id="password" name="password" placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" required>
                     </div>
                 </div>
                 <button type="submit" class="btn-primary">Daftar</button>
