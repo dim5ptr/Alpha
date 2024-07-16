@@ -12,4 +12,16 @@ Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
 
 Route::get('/', function () {
     return view('welcome');
+
 });
+
+Route::get('/dashboard', function () {
+    return view('users.dashboard');
+})->name('dashboard');
+
+Route::post('/logout', function () {
+    // Implement your logout logic here
+    // For example, clearing session or invalidating tokens
+    return redirect('/login');
+})->name('logout');
+
