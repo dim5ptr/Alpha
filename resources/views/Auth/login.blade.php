@@ -1,71 +1,189 @@
-<!-- resources/views/auth/login.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Login</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
         body {
-            background-color: #f8f9fa;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background: linear-gradient(135deg, #AFC3FC, #365AC2);
         }
-        .login-container {
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .login-box {
+            display: flex;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .left, .right {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .left {
+            background-color: #e9edf9;
+            color: #365AC2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left img {
             width: 100%;
             max-width: 400px;
-            padding: 15px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .login-container h2 {
+            height: auto;
             margin-bottom: 20px;
         }
-        .login-container .form-control {
-            margin-bottom: 10px;
+
+        .right {
+            background: #365AC2;
+            color: #e9edf9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-        .login-container .btn {
+
+        .right h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #e9edf9;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
             width: 100%;
+        }
+
+        .input-group input {
+            outline: none;
+            width: 400px;
+            height: 50px;
+            padding: 18px;
+            padding-left: 50px;
+            border: 1px solid #ccc;
+            background: #e9edf9;
+            border-radius: 30px;
+            font-size: 1rem;
+        }
+
+        .input-group input:hover {
+            box-shadow: 0 0 5px #AFC3FC;
+        }
+
+        .input-group .icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #365AC2;
+        }
+
+        .forgot-password {
+            text-align: right;
+            width: 100%;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        .forgot-password a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 18px;
+            background: #e9edf9;
+            color: #365AC2;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background: #AFC3FC;
+            color: rgb(0, 0, 0);
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .register-link a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2 class="text-center">Login</h2>
-        @if (session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
+    <div class="container">
+        <div class="login-box">
+            <div class="left">
+                <img src="{{ asset('pict/B.png') }}" alt="Welcome Image">
             </div>
-        @endif
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                @endforeach
+            <div class="right">
+                <h2>Login</h2>
+                <form action="{{ route('login') }}" method="post">
+                    @csrf
+                    <div class="input-group">
+                        <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                        <span class="icon"><i class="fas fa-user"></i></span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" placeholder="Password">
+                        <span class="icon"><i class="fas fa-lock"></i></span>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="{{ route('forgot-password') }}">Lupa Password?</a>
+                    </div>
+                    <input type="submit" value="Login" class="btn-login">
+                </form>
+                <div class="register-link">
+                    <p>Belum punya akun? <a href="{{ route('register') }}">Daftar Sekarang</a></p>
+                </div>
             </div>
-        @endif
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-        <div class="mt-3 text-center">
-            <a href="{{ route('register') }}">Don't have an account? Register here.</a>
-        </div>
-        <div class="mt-3 text-center">
-            <a href="{{ route('forgot-password') }}">Forgot your password?</a>
         </div>
     </div>
 </body>
