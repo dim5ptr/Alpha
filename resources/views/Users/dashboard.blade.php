@@ -222,7 +222,7 @@
             <a href="#">
                 <i class="fas fa-home"></i>
             </a>
-            <a href="">
+            <a href="{{ route('profile') }}">
             <i class="fas fa-user"></i>
         </a> </div>
     </header>
