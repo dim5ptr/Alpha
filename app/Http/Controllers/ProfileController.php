@@ -1,44 +1,38 @@
 <?php
 // app/Http/Controllers/ProfileController.php
+// app/Http/Controllers/ProfileController.php
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User; // Sesuaikan dengan namespace dan nama model User Anda
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
     public function edit()
     {
-        // Logic to fetch current user's profile data
-        if (!auth()->check()) {
-            return redirect()->route('login'); // Ganti 'login' dengan nama route login Anda
-        }
-
-        // Ambil data profil pengguna
-        $user = auth()->user();
-
-        return view('page.editProf', compact('user'));
+        $user = Auth::user();
+        return view('profile.edit', compact('user'));
     }
 
     public function update(Request $request)
     {
-        // Validation rules, adjust as needed
-        $rules = [
+        $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . auth()->id(),
-            // Add more fields as necessary
-        ];
+            'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
 
-        $request->validate($rules);
-
-        // Update user's profile
-        $user = auth()->user();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        // Update other fields as necessary
+        $user = Auth::user();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->input('password'));
+        }
         $user->save();
 
-        return redirect()->route('profile.edit')->with('success', 'Profile updated successfully!');
+        return redirect()->route('profile.edit')->with('success', 'Profile updated successfully.');
     }
 }
+
