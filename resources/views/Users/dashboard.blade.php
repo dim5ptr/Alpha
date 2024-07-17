@@ -157,10 +157,10 @@
 
 .card-text {
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
+    text-align: left;
     border-radius: 15px;
     border: 2px solid wheat;
     width: 93%;
@@ -202,14 +202,14 @@
                 }
 
                 .card p {
-                    font-size: 1rem; /* Ukuran teks deskripsi */
-                    margin-bottom: 10px;
-                    padding: 10px; /* Ruang dalam */
+                    font-size: 1rem;
+                    margin-bottom: 25%;
+                    padding: 10px;
                 }
 
-
-
-
+                .card span {
+                    font-weight: bold;
+                }
     </style>
 </head>
 <body>
@@ -243,7 +243,7 @@
                 <div class="card-content">
                     <img src="pict/il.jpg" alt="Grafis ilustratif" class="card-icon">
                     <div class="card-text">
-                        <p>Grafis ilustratif</p>
+                        <p><span>Grafis ilustratif </span></br>gambarkan ide, menceritakan cerita, atau menjelaskan konsep.</p>
                     </div>
                 </div>
             </div>
@@ -251,7 +251,8 @@
                 <div class="card-content">
                     <img src="pict/anm.jpg" alt="Motion graphics" class="card-icon">
                     <div class="card-text">
-                        <p>Motion graphics</p>
+                        <p><span>Motion graphics</span></br>melibatkan pembuatan gerakan dan ilusi dari gambar statis atau objek untuk menciptakan ilusi gerak.</p>
+
                     </div>
                 </div>
             </div>
@@ -259,7 +260,7 @@
                 <div class="card-content">
                     <img src="pict/grp.jpg" alt="Komunikasi visual" class="card-icon">
                     <div class="card-text">
-                        <p>Komunikasi visual</p>
+                        <p><span>Komunikasi visual </span></br>gunakan elemen-elemen seperti gambar, teks, dan warna untuk menciptakan komunikasi yang efektif.</p>
                     </div>
                 </div>
             </div>
@@ -267,7 +268,7 @@
                 <div class="card-content">
                     <img src="pict/vid.jpg" alt="Sinematografi digital" class="card-icon">
                     <div class="card-text">
-                        <p>Sinematografi digital</p>
+                        <p><span>Sinematografi digital</span></br>konten visual bergerak yang bisa berupa animasi, video klip, atau kombinasi dari keduanya.</br></p>
                     </div>
                 </div>
             </div>
